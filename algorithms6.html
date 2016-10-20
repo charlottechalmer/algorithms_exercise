@@ -14,48 +14,50 @@ Put a dragon in the north room and a shield in the west room. They must get the 
 When they get past the dragon (“go north” in the north room while holding the shield), they win the game.
 
 If you are feeling adventurous, try adding even more rooms, items, and challenges to this game!-->
-	<script>
+<script>
 	var win = false;
 	var room = "START";
 	var hasKeys = false;
 
 
-var direction = prompt("Our journey begins on July 6th at 1am. Charlotte is celebrating her birthday and you are having a great time. You are surrounded by friends, great music is playing and you are enjoying your time. Suddenly, you realize that you need to pee and need to do it ASAP, but you don't know where the bathroom is. There are two exits in the party room: one to the north and one to the west. Which direction do you choose? (Please enter 'NORTH' or 'WEST')").toUpperCase();
+	var direction = prompt("Our journey begins on July 6th at 1am. Charlotte is celebrating her birthday and you are having a great time. You are surrounded by friends, great music is playing and you are enjoying your time. Suddenly, you realize that you need to pee and need to do it ASAP, but you don't know where the bathroom is. There are two exits in the party room: one to the north and one to the west. Which direction do you choose? (Please enter 'NORTH' or 'WEST')").toUpperCase();
 
-	while(win != true) {
+	while(win !== true) {
 		if(room === "START" && direction === "NORTH") {
 			room = "MOM";
 			if (room === "MOM" && hasKeys === true) {
 				var win = true;
-				alert("You have successfully sent your mom home and have made it to the bathroom! Sweet relief!")
+				alert("You have successfully sent your mom home and have made it to the bathroom! Sweet relief!");
 			} else if (room === "MOM" && hasKeys === false) {
 				direction = prompt("You have entered the kitchen! ... Uh oh! You suddenly hear someone yell your name. Your mom is here! She is standing in front of the doorway to the bathroom and she is not happy with the debauchery that is happening at this party. Quickly, before you can get by her to use the bathroom, you have to find her keys to send her home. They aren't in this room. Go back to look for the keys. (Please enter 'SOUTH' to return to the last room.").toUpperCase();
 			}	if (room === "MOM" && direction === "SOUTH") {
-					room = "START";
-					direction = prompt("You have returned to the party room and the keys are not here. Perhaps check the room to the west! (Please enter 'WEST' to check the other room)").toUpperCase();
-				} 
+				room = "START";
+				direction = prompt("You have returned to the party room and the keys are not here. Perhaps check the room to the west! (Please enter 'WEST' to check the other room)").toUpperCase();
+			} 
 		} else if (room === "START" && direction === "WEST") {
-				room = "CHARLOTTES"
+			room = "CHARLOTTES";
 			//in KEYS room- pick up keys, return to start room
 			pickupKeys = prompt("You have entered Charlotte's room! and look! You have found a set of keys! Would you like to pick them up to find their rightful owner? (Please enter 'YES' or 'NO'").toUpperCase();
-					if (pickupKeys === "YES") {
-						hasKeys = true;
-						direction = prompt("You have picked up the keys. There is no other exit in this room. Please return to the party room. (Please enter 'EAST')").toUpperCase();
-					} else if (pickupKeys === "NO") {
-						direction = prompt("You have not picked up the keys. There is no other exit in this room. Please return to the party room. (Please enter 'EAST')").toUpperCase();
-					} 
+			if (pickupKeys === "YES" && hasKeys === false) {
+				hasKeys = true;
+				direction = prompt("You have picked up the keys. There is no other exit in this room. Please return to the party room. (Please enter 'EAST')").toUpperCase();
+			} else if (pickupKeys === "YES" && hasKeys === true) {
+				direction = prompt("Uh Oh! You already picked up the keys! There is no other exit in this room. Please return to the party room. (Please enter 'EAST')").toUpperCase();
+			} else if (pickupKeys === "NO") {
+				direction = prompt("There is no other exit in this room. Please return to the party room. (Please enter 'EAST')").toUpperCase();
+			} 
 		} else if (room === "CHARLOTTES" && direction === "EAST") {
 			room = "START";
 			direction = prompt("You are back in the party room! You have the option of going back west to Charlotte's room or going north into the other room. Which direction would you like to go? (Please enter 'WEST' to go back to Charlotte's room or 'NORTH' to go into the other room)").toUpperCase();
-			} else {
-				alert("uh-oh! I don't know where you went. Your mom has come to find you and take you home.");
-				break;
-			}			
+		} else {
+			alert("uh-oh! I don't know where you went. Your mom has come to find you and take you home.");
+			break;
+		}			
 	}
 	//program each arrow
 
- 			
 
-	</script>
+
+</script>
 </body>
 </html>
